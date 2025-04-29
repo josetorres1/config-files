@@ -1,0 +1,34 @@
+# create alacritty config file for wsl
+# This file is used to configure Alacritty, a terminal emulator.
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+  normal = { family = "JetBrainsMono Nerd Font Mono" }
+  bold = { family = "JetBrainsMono Nerd Font Mono", style = "Bold" }
+  italic = { family = "JetBrainsMono Nerd Font Mono", style = "Italic" }
+
+  # Font size in points (1 point = 1/72 inch).
+  size = 16
+
+[terminal]
+    # The shell to run when Alacritty starts.
+    # Starts with tmux by default. validate if tmux is running and session 'developer' is active.
+    # If not, start a new tmux session with the name 'developer'.
+    shell = { program = "wsl", args = ["-e", "tmux", "new-session", "-A", "-D", "-s", "developer"] }
+    # shell for ubuntu os in native ubuntu zsh and tmux
+    # shell = { program = "wsl", args = ["-e", "tmux", "new-session", "-A", "-D", "-s", "developer"] }
+    shell = { program = 'zsh', args = ["-e", "tmux", "new-session", "-A", "-D", "-s", "developer"] }
+[window]
+  # Window dimensions in character columns and lines.
+  dimensions = { columns = 120, lines = 30 }
+
+  # Window padding (in pixels).
+  padding = { x = 10, y = 10 }
+
+  # Window decorations.
+  decorations = "full"
+
+  # Window title.
+  title = "Alacritty WSL Terminal"
